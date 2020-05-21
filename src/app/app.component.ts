@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Quotation } from './models/quotation';
 import { QUOTES } from './models/data-base';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,10 +18,8 @@ export class AppComponent {
   addQuotation() {
     this.quotes.unshift(this.quotation);
     this.quotation = {author: '', sentence: '', votes: 0};
-    this.quotes.sort((a, b) => b.votes - a.votes);
   }
   addVote(quotation: Quotation, value: number) {
     quotation.votes += value;
-    this.quotes.sort((a, b) => b.votes - a.votes);
   }
 }
