@@ -9,10 +9,14 @@
   </button>
   <div class="row edit-row" [class.drawer]="showForm">
     <div class="input-field col s4">
-      <input type="text" placeholder="Autor" [(ngModel)]="quotation.author"/>
+      <label>
+        <input type="text" placeholder="Autor" [(ngModel)]="quotation.author"/>
+      </label>
     </div>
     <div class="input-field col s6">
-      <input type="text" placeholder="Cytat" [(ngModel)]="quotation.sentence"/>
+      <label>
+        <input type="text" placeholder="Cytat" [(ngModel)]="quotation.sentence"/>
+      </label>
     </div>
     <div class="input-field col s2">
       <button class="btn small" (click)="addQuotation()">Dodaj</button>
@@ -51,18 +55,7 @@
 
     <!-- Sekcja rankigów -->
     <div class="col s4">
-      <div class="col s12">
-        <h5>Najlepsze</h5>
-        <div class="collection">
-          <ng-container *ngFor="let quotation of quotes">
-          <p class="collection-item" *ngIf="quotation.votes > 0">
-            <span class="blue lighten-4 badge">{{quotation.votes}}</span>
-            {{quotation.sentence}}<br />
-            <span class="blue-text">{{quotation.author}}</span>
-          </p>
-          </ng-container>
-        </div>
-      </div>
+      <app-ranking [quotes]="quotes"></app-ranking>
       <div class="col s12">
         <h5>Najgorsze</h5>
         <div class="collection">
