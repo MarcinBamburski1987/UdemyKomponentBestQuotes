@@ -9,6 +9,7 @@ import { QUOTES } from './models/data-base';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  titleFromAppComponent = 'new title';
   showForm = false;
   quotes: Quotation[] = QUOTES;
   quotation: Quotation = {author: '', sentence: '', votes: 0};
@@ -21,5 +22,11 @@ export class AppComponent {
   }
   addVote(quotation: Quotation, value: number) {
     quotation.votes += value;
+  }
+  bestQuotes() {
+    return this.quotes.filter(q => q.votes > 0);
+  }
+  worstQuotes() {
+    return this.quotes.filter(q => q.votes < 0);
   }
 }
